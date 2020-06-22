@@ -1,0 +1,19 @@
+apply from: "../module-build.gradle"
+
+android {
+
+    defaultConfig {
+        //当module为独立模块时，才需要applicationId
+        if (rootProject.ext.isBuildModule){
+            applicationId "com.king.mvvm.joke"
+        }
+    }
+
+    //统一规范资源名称前缀，防止多个 module 之间资源冲突
+    resourcePrefix "joke_"
+
+}
+
+dependencies {
+    //...
+}

@@ -1,0 +1,89 @@
+apply plugin: 'com.android.library'
+apply plugin: 'kotlin-android'
+apply plugin: 'kotlin-android-extensions'
+apply plugin: 'kotlin-kapt'
+
+android {
+    compileSdkVersion build_versions.compileSdk
+    buildToolsVersion build_versions.buildTools
+
+    defaultConfig {
+        minSdkVersion build_versions.minSdk
+        targetSdkVersion build_versions.targetSdk
+        versionCode app_version.versionCode
+        versionName app_version.versionName
+
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+        consumerProguardFiles 'consumer-rules.pro'
+
+        kapt {
+            arguments {
+                arg("AROUTER_MODULE_NAME", project.getName())
+            }
+        }
+    }
+
+    //统一规范资源名称前缀，防止多个 module 之间资源冲突
+    resourcePrefix "base_"
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+
+    buildFeatures{
+        dataBinding = true
+    }
+
+    compileOptions {
+        targetCompatibility JavaVersion.VERSION_1_8
+        sourceCompatibility JavaVersion.VERSION_1_8
+    }
+
+
+    lintOptions {
+        abortOnError false
+        warning 'InvalidPackage'
+    }
+
+}
+
+dependencies {
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+
+    testImplementation deps.test.junit
+    androidTestImplementation deps.test.android_junit
+    androidTestImplementation deps.test.runner
+    androidTestImplementation deps.test.espresso
+
+    compileOnly deps.kotlin_stdlib
+    compileOnly deps.kotlin_core
+
+    compileOnly deps.kotlinx_coroutines_core
+    compileOnly deps.kotlinx_coroutines_android
+    compileOnly deps.lifecycle_viewmodel_ktx
+
+    kapt  deps.dagger.android_processor
+    kapt  deps.dagger.compiler
+
+    kapt  deps.room.compiler
+
+    api deps.router.arouter
+    kapt deps.router.arouter_compiler
+
+    api project(":common-res")
+
+    api deps.appcompat
+    api deps.jenly.mvvmframe
+    api deps.jenly.base_adapter
+    api deps.jenly.base_util
+    api deps.logger
+
+    api deps.glide.glide
+    kapt deps.glide.glide_compiler
+
+    compileOnly deps.recyclerview
+
+}

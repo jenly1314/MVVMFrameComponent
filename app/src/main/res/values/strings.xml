@@ -1,0 +1,9 @@
+<resources>
+    <string name="app_name">MVVMFrameComponent</string>
+
+    <string name="app_btn_joke">笑话</string>
+    <string name="app_btn_news">新闻</string>
+    
+    <string name="app_toast_is_build_module">当前为组件化Module独立运行模式</string>
+
+</resources>

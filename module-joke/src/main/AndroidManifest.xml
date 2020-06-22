@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.king.mvvm.joke">
+
+    <application>
+        <activity android:name="com.king.mvvm.joke.app.main.JokeMainActivity"
+            android:screenOrientation="portrait"/>
+
+<!--        <meta-data android:name="com.king.mvvm.joke.app.JokeComponentApp"-->
+<!--            android:value="ComponentApp"/>-->
+
+    </application>
+
+</manifest>

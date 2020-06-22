@@ -1,0 +1,11 @@
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.king.mvvm.base">
+
+    <application>
+
+        <meta-data android:name="com.king.mvvm.base.app.BaseComponentApp"
+            android:value="ComponentApp"/>
+
+    </application>
+
+</manifest>

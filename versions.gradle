@@ -1,0 +1,130 @@
+//App
+def app_version = [:]
+app_version.versionCode = 1
+app_version.versionName = "1.0.0"
+ext.app_version = app_version
+
+//build version
+def build_versions = [:]
+build_versions.minSdk = 21
+build_versions.targetSdk = 29
+build_versions.compileSdk = 29
+build_versions.buildTools = "29.0.3"
+ext.build_versions = build_versions
+
+// App dependencies
+def versions = [:]
+
+versions.gradle = '4.0.0'
+versions.kotlin = "1.3.72"
+
+versions.appcompat = "1.1.0"
+versions.coreKtx = "1.3.0"
+versions.material = "1.1.0-rc02"
+versions.constraintlayout = "1.1.3"
+versions.junit = "4.13"
+versions.androidExtJunit = "1.1.1"
+versions.runner = "1.2.0"
+versions.espresso = "3.2.0"
+versions.swiperefreshlayout = "1.1.0-rc01"
+versions.recyclerview = "1.1.0"
+
+versions.kotlinxCoroutines = "1.3.4"
+versions.viewmodelKtx="2.2.0"
+versions.room = "2.2.5"
+versions.dagger = "2.27"
+versions.multidex = "2.0.1"
+
+versions.mvvmframe = "1.1.3"
+versions.nevercrash = "1.0.0"
+versions.base = "3.2.1-androidx"
+versions.appUpdater = "1.0.8-androidx"
+
+versions.logger = "2.2.0"
+versions.glide = "4.10.0"
+
+versions.leakcanary = "2.2"
+versions.leakcanaryNoOp = "1.6.3"
+
+versions.arouter = "1.5.0"
+versions.arouterCompiler = "1.2.2"
+
+ext.versions = versions
+
+
+ext.deps = [:]
+
+deps.material = "com.google.android.material:material:$versions.material"
+
+deps.appcompat = "androidx.appcompat:appcompat:$versions.appcompat"
+
+deps.swiperefreshlayout = "androidx.swiperefreshlayout:swiperefreshlayout:$versions.swiperefreshlayout"
+
+deps.recyclerview = "androidx.recyclerview:recyclerview:$versions.recyclerview"
+
+deps.constraintlayout = "androidx.constraintlayout:constraintlayout:$versions.constraintlayout"
+
+deps.multidex = "androidx.multidex:multidex:$versions.multidex"
+
+deps.kotlin_stdlib =  "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$versions.kotlin"
+deps.kotlin_core = "androidx.core:core-ktx:$versions.coreKtx"
+
+deps.kotlinx_coroutines_core = "org.jetbrains.kotlinx:kotlinx-coroutines-core:$versions.kotlinxCoroutines"
+deps.kotlinx_coroutines_android = "org.jetbrains.kotlinx:kotlinx-coroutines-android:$versions.kotlinxCoroutines"
+deps.lifecycle_viewmodel_ktx = "androidx.lifecycle:lifecycle-viewmodel-ktx:$versions.viewmodelKtx"
+
+
+//test
+def test = [:]
+test.junit = "junit:junit:$versions.junit"
+test.android_junit = "androidx.test.ext:junit:$versions.androidExtJunit"
+test.runner = "androidx.test:runner:$versions.runner"
+test.espresso = "androidx.test.espresso:espresso-core:$versions.espresso"
+deps.test = test
+
+//room
+def room = [:]
+room.runtime = "androidx.room:room-runtime:$versions.room"
+room.compiler = "androidx.room:room-compiler:$versions.room"
+room.rxjava2 = "androidx.room:room-rxjava2:$versions.room"
+deps.room = room
+
+//dagger
+def dagger = [:]
+dagger.dagger = "com.google.dagger:dagger:$versions.dagger"
+dagger.android = "com.google.dagger:dagger-android:$versions.dagger"
+dagger.android_support = "com.google.dagger:dagger-android-support:$versions.dagger"
+dagger.android_processor = "com.google.dagger:dagger-android-processor:$versions.dagger"
+dagger.compiler = "com.google.dagger:dagger-compiler:$versions.dagger"
+deps.dagger = dagger
+
+// router
+def router = [:]
+router.arouter = "com.alibaba:arouter-api:$versions.arouter"
+router.arouter_compiler = "com.alibaba:arouter-compiler:$versions.arouterCompiler"
+deps.router = router
+
+//jenly1314
+def jenly = [:]
+jenly.base_adapter = "com.king.base:adapter:$versions.base"
+jenly.base_util = "com.king.base:util:$versions.base"
+jenly.app_updater = "com.king.app:app-updater:$versions.appupdater"
+jenly.app_dialog = "com.king.app:app-dialog:$versions.appupdater"
+jenly.nevercrash = "com.king.thread:nevercrash:$versions.neverCrash"
+jenly.mvvmframe = "com.king.frame:mvvmframe:$versions.mvvmframe"
+deps.jenly = jenly
+
+deps.logger = "com.orhanobut:logger:$versions.logger"
+
+def glide = [:]
+glide.glide = "com.github.bumptech.glide:glide:$versions.glide"
+glide.glide_compiler = "com.github.bumptech.glide:compiler:$versions.glide"
+deps.glide = glide
+
+//leakcanary
+def leakcanary = [:]
+leakcanary.debug = "com.squareup.leakcanary:leakcanary-android:$versions.leakcanary"
+leakcanary.release = "com.squareup.leakcanary:leakcanary-android-no-op:$versions.leakcanaryNoOp"
+deps.leakcanary = leakcanary
+
+ext.deps = deps

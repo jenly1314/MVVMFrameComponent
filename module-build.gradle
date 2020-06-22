@@ -1,0 +1,104 @@
+/**
+ * 组件化子 module 通用 build.gradle，方便统一管理
+ *
+ * 根据 isBuildModule 来统一管理各个子 module 在 application 与 library 之间切换
+ */
+if (rootProject.ext.isBuildModule){
+    apply plugin: 'com.android.application'
+}else{
+    apply plugin: 'com.android.library'
+}
+
+apply plugin: 'kotlin-android'
+apply plugin: 'kotlin-android-extensions'
+apply plugin: 'kotlin-kapt'
+
+android {
+    compileSdkVersion build_versions.compileSdk
+    buildToolsVersion build_versions.buildTools
+
+    defaultConfig {
+        minSdkVersion build_versions.minSdk
+        targetSdkVersion build_versions.targetSdk
+        versionCode app_version.versionCode
+        versionName app_version.versionName
+
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+        consumerProguardFiles 'consumer-rules.pro'
+
+        kapt {
+            arguments {
+                arg("AROUTER_MODULE_NAME", project.getName())
+            }
+        }
+
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+
+    buildFeatures{
+        dataBinding = true
+    }
+
+    compileOptions {
+        targetCompatibility JavaVersion.VERSION_1_8
+        sourceCompatibility JavaVersion.VERSION_1_8
+    }
+
+
+    lintOptions {
+        abortOnError false
+        warning 'InvalidPackage'
+    }
+
+    sourceSets {
+        main {
+            if (rootProject.ext.isBuildModule) {
+                //module 作为 application 独立运行
+                manifest.srcFile 'src/main/module/AndroidManifest.xml'
+            } else {
+                //module 作为 library 合并到宿主App
+                manifest.srcFile 'src/main/AndroidManifest.xml'
+                resources {
+                    exclude 'src/main/module/*'
+                }
+            }
+        }
+    }
+
+}
+
+dependencies {
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+
+    testImplementation deps.test.junit
+    androidTestImplementation deps.test.android_junit
+    androidTestImplementation deps.test.runner
+    androidTestImplementation deps.test.espresso
+
+    kapt  deps.dagger.android_processor
+    kapt  deps.dagger.compiler
+
+    kapt  deps.room.compiler
+
+    kapt deps.router.arouter_compiler
+
+    api deps.constraintlayout
+
+    api deps.kotlin_stdlib
+    api deps.kotlin_core
+
+    api deps.kotlinx_coroutines_core
+    api deps.kotlinx_coroutines_android
+    api deps.lifecycle_viewmodel_ktx
+
+    api deps.recyclerview
+    api deps.swiperefreshlayout
+
+    api project(":common-base")
+}

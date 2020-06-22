@@ -1,0 +1,6 @@
+include ':common-res'
+include ':module-news'
+include ':module-joke'
+include ':common-base'
+include ':app'
+rootProject.name = "MVVMFrameComponent"
