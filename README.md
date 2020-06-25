@@ -25,6 +25,8 @@
 
 ## 架构
 
+**MVVMFrameComponent** 组件化架构图分层如下：
+
 ![Architecture](art/MVVMFrameComponent_architecture.jpg)
 
 因为组件化的核心基础库是基于 **MVVMFrame**，这里贴出 **MVVMFrame** 的架构图如下：
@@ -44,7 +46,7 @@
 
 ## MVVMFrameComponent 组件化方案
 
-**MVVMFrame** + **Component** = **MVVMFrameComponent**。即 **MVVMFrameComponent** 采用 **MVVM** 模式架构的组件化方案。
+**MVVMFrameComponent** = **MVVMFrame** + **Component**。即 **MVVMFrameComponent** 采用 **MVVM** 模式架构的组件化方案。
 
 
 ## 工程各个 Module 相关说明
@@ -64,7 +66,9 @@
 ### module-news
 一个简单的新闻功能模块：主要用来展示基于 **MVVMFrame** 来实现组件化开发，作为组件化开发的 **Module** 实现示例之一。
 
-### 其它说明
+## 其他
+
+### 特别说明
 **Project** -> **build.gradle** 内的自定义变量 **isBuildModule**
 > 自定义变量 **isBuildModule** 来统一管理各个子 module 方便在 **application** 与 **library** 之间进行切换
 >> 当 **isBuildModule = true** 时，表示 各个子 **module** 为 **application** ，即 **module** 可独立运行
@@ -73,6 +77,38 @@
 **Project** -> **module-build.gradle**
 > 组件化子 **module** 通用 **build.gradle** ，方便统一管理
 >> 根据 **isBuildModule** 来统一管理各个子 **module** 在 **application** 与 **library** 之间切换
+
+
+### 关于 **MVVMFrame**
+因为 **MVVMFrameComponent** 的核心基础库是基于 **MVVMFrame** 的，所以需要对 **MVVMFrame** 有一定的了解，才能在使用 **MVVMFrameComponent** 时更加得心应手，
+这里不再特意介绍 **MVVMFrame** 相关的使用，具体介绍你可以直接查看 [MVVMFrame](https://github.com/jenly1314/MVVMFrame)
+
+## 示例
+
+### 关于各组件/模块共用 **Application** 初始化
+
+在每一个子模块，写一个**IComponentApp**的实现类，实现各个子模块共用 **Application**，示例如下：
+```kotlin
+//这是app中的示例
+class AppComponentApp: IComponentApp {
+
+    override fun onCreate(app: BaseApp) {
+        DaggerAppMainComponent.builder()
+            .appComponent(app.appComponent)
+            .build()
+            .inject(app)
+
+    }
+
+}
+```
+
+在 **Manifest** 中配置 **meta-data** 对应的**IComponentApp**实现类，示例如下 ：
+```xml
+        <meta-data android:name="com.king.mvvm.component.app.AppComponentApp"
+            android:value="ComponentApp"/>
+```
+
 
 更多使用详情，请查看[app](app)中的源码使用示例
 
