@@ -14,8 +14,7 @@
 
 ### 主要使用的核心技术
 
-* JetPack(Lifecycle，LiveData，ViewModel，Room)
-* Hilt
+* JetPack(Lifecycle，LiveData，ViewModel，Room，Hilt)
 * Dagger
 * DataBinding
 * Retrofit
