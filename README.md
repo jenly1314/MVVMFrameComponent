@@ -86,15 +86,18 @@
 ## 示例
 
 ### 关于各组件/模块共用 **Application** 初始化
- 对于模块公用的可以尽量写在 **BaseApp** 中，对于模块相对独立使用的，可以写在模块对应 **IComponentApp** 的实现实现类中
+
+ 对于模块公用的可以尽量写在 **BaseApp** 中，对于模块相对独立使用的，可以写在模块对应 **IComponentApp** 的实现实现类中。
  
- **IComponentApp**的实现类为非必须的，如果你有这样的需要才使用，这里贴出各模块的 **IComponentApp** 实现类示例供参考：
+ 特别说明：对于**IComponentApp** 的实现只是为你提供对应需求的一种解决方式，是可选的。根据需要使用。
+ 
+ 这里贴出各模块的 **IComponentApp** 实现类示例供参考：
  
  [**module-joke**](module-joke) 中 **IComponentApp** 的实现类是 [**JokeComponentApp**](module-joke/src/main/java/com/king/mvvm/joke/JokeComponentApp.kt)
  
  [**module-news**](module-news) 中 **IComponentApp** 的实现类是 [**NewsComponentApp**](module-news/src/main/java/com/king/mvvm/news/NewsComponentApp.kt)
 
-这里贴出[**module-joke**](module-joke)中的代码示例
+下面是 [**module-joke**](module-joke) 中的代码示例
 ```kotlin
 class JokeComponentApp : IComponentApp{
 
