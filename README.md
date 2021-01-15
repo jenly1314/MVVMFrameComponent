@@ -89,7 +89,9 @@
  对于模块公用的可以尽量写在 **BaseApp** 中，对于模块相对独立使用的，可以写在模块对应 **IComponentApp** 的实现实现类中
  
  **IComponentApp**的实现类为非必须的，如果你有这样的需要才使用，这里贴出各模块的 **IComponentApp** 实现类示例供参考：
+ 
  [**module-joke**](module-joke) 中 **IComponentApp** 的实现类是 [**JokeComponentApp**](module-joke/src/main/java/com/king/mvvm/joke/JokeComponentApp.kt)
+ 
  [**module-news**](module-news) 中 **IComponentApp** 的实现类是 [**NewsComponentApp**](module-news/src/main/java/com/king/mvvm/news/NewsComponentApp.kt)
 
 这里贴出[**module-joke**](module-joke)中的代码示例
