@@ -13,7 +13,7 @@ import timber.log.Timber
  */
 open class BaseApp : Application(){
 
-    var componentApps: MutableList<IComponentApp>? = null
+    private var componentApps: MutableList<IComponentApp>? = null
 
     override fun onCreate() {
         super.onCreate()
@@ -64,6 +64,9 @@ open class BaseApp : Application(){
         }
     }
 
+    /**
+     * 初始化ARouter
+     */
     private fun initARouter(){
         Timber.d("isDebug:${BuildConfig.DEBUG}")
         if(BuildConfig.DEBUG){
@@ -74,12 +77,18 @@ open class BaseApp : Application(){
         ARouter.init(this)
     }
 
-//    fun getComponentApp(cls: Class<Any>): IComponentApp{
-//        componentApps?.forEach {
-//            if(it is cls){
-//
-//            }
-//        }
-//    }
+    /**
+     * 获取模块的[IComponentApp]实现类
+     */
+    fun <T : IComponentApp?> getComponentApp(cls: Class<T>): T? {
+        if (componentApps != null) {
+            for (componentApp in componentApps!!) {
+                if (cls.isInstance(componentApp)) {
+                    return componentApp as T
+                }
+            }
+        }
+        return null
+    }
 
 }
