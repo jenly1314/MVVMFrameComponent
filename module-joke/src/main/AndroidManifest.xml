@@ -6,8 +6,9 @@
         <activity android:name="com.king.mvvm.joke.app.main.JokeMainActivity"
             android:screenOrientation="portrait"/>
 
-<!--        <meta-data android:name="com.king.mvvm.joke.app.JokeComponentApp"-->
-<!--            android:value="ComponentApp"/>-->
+        <!-- name为：IComponentApp的实现类，value固定为: ComponentApp -->
+        <meta-data android:name="com.king.mvvm.joke.JokeComponentApp"
+            android:value="ComponentApp"/>
 
     </application>
 

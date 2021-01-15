@@ -10,9 +10,11 @@ import com.king.mvvm.base.adapter.BaseAdapter
 import com.king.mvvm.news.R
 import com.king.mvvm.news.bean.NewsDTO
 import com.king.mvvm.news.databinding.NewsActivityMainBinding
+import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.android.synthetic.main.news_activity_main.*
 
 @Route(path = Constants.ROUTE.NEWS_MAIN)
+@AndroidEntryPoint
 class NewsMainActivity : BaseActivity<NewsMainViewModel, NewsActivityMainBinding>(){
 
     private val mAdapter by lazy { BaseAdapter<NewsDTO>(context,R.layout.news_rv_news_item) }

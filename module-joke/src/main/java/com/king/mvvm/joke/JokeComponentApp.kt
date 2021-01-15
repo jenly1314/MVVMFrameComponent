@@ -1,8 +1,7 @@
-package com.king.mvvm.joke.app
+package com.king.mvvm.joke
 
 import com.king.mvvm.base.BaseApp
 import com.king.mvvm.base.IComponentApp
-import com.king.mvvm.joke.di.component.DaggerJokeComponent
 
 /**
  * @author <a href="mailto:jenly1314@gmail.com">Jenly</a>
@@ -10,10 +9,7 @@ import com.king.mvvm.joke.di.component.DaggerJokeComponent
 class JokeComponentApp : IComponentApp{
 
     override fun onCreate(app: BaseApp) {
-        DaggerJokeComponent.builder()
-            .appComponent(app.appComponent)
-            .build()
-            .inject(app)
+
     }
 
 }

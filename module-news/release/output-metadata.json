@@ -1,19 +1,17 @@
 {
-  "version": 1,
+  "version": 2,
   "artifactType": {
     "type": "APK",
     "kind": "Directory"
   },
   "applicationId": "com.king.mvvm.news",
-  "variantName": "release",
+  "variantName": "processReleaseResources",
   "elements": [
     {
       "type": "SINGLE",
       "filters": [],
-      "properties": [],
       "versionCode": 1,
-      "versionName": "1",
-      "enabled": true,
+      "versionName": "1.0.0",
       "outputFile": "module-news-release.apk"
     }
   ]

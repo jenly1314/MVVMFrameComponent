@@ -11,7 +11,7 @@
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
 
     <application
-        android:name="com.king.mvvm.base.BaseApp"
+        android:name=".NewsApp"
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/news_app_name"
@@ -29,7 +29,8 @@
             </intent-filter>
         </activity>
 
-        <meta-data android:name="com.king.mvvm.news.app.NewsComponentApp"
+        <!-- name为：IComponentApp的实现类，value固定为: ComponentApp -->
+        <meta-data android:name="com.king.mvvm.news.NewsComponentApp"
             android:value="ComponentApp"/>
 
     </application>

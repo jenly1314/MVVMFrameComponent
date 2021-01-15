@@ -2,7 +2,7 @@ apply plugin: 'com.android.application'
 apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-android-extensions'
 apply plugin: 'kotlin-kapt'
-
+apply plugin: 'dagger.hilt.android.plugin'
 
 android {
     compileSdkVersion build_versions.compileSdk
@@ -65,11 +65,17 @@ dependencies {
     androidTestImplementation deps.test.runner
     androidTestImplementation deps.test.espresso
 
-    kapt deps.dagger.android_processor
-    kapt deps.dagger.compiler
+    //lifecycle
+    kapt "androidx.lifecycle:lifecycle-compiler:$versions.lifecycle"
+    //room
+    kapt "androidx.room:room-compiler:$versions.room"
+    //hilt
+    implementation "com.google.dagger:hilt-android:$versions.hiltAndroid"
+    kapt "com.google.dagger:hilt-android-compiler:$versions.hiltAndroid"
 
-    kapt deps.room.compiler
-
+    implementation "androidx.hilt:hilt-lifecycle-viewmodel:$versions.hilt"
+    kapt "androidx.hilt:hilt-compiler:$versions.hilt"
+    //router
     kapt deps.router.arouter_compiler
 
     //当各个 module 作为 application 独立运行时，宿主app需引入使用到的一些公共依赖
@@ -93,8 +99,7 @@ dependencies {
     }
 
     //leakCanary
-    debugImplementation deps.leakcanary.debug
-    releaseImplementation deps.leakcanary.release
+    debugImplementation deps.leakcanary
 
 }
 

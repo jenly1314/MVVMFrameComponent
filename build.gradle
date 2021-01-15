@@ -11,6 +11,7 @@ buildscript {
     dependencies {
         classpath "com.android.tools.build:gradle:$versions.gradle"
         classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$versions.kotlin"
+        classpath "com.google.dagger:hilt-android-gradle-plugin:$versions.hiltAndroid"
 
         // NOTE: Do not place your application dependencies here; they belong
         // in the individual module build.gradle files
@@ -36,9 +37,6 @@ ext {
      * TODO 自定定义变量 isBuildModule 来统一管理各个子 module 方便在 application 与 library 之间进行切换
      * 当 isBuildModule = true 时，表示 各个子 module 为 application，即 module 可独立运行
      * 当 isBuildModule = false 时，表示 各个子 module 为 library，即 module 作为 library 合并到 宿主App
-     *
-     * TODO 当 isBuildModule 的值改变时，记得同步更新一下 宿主App中的 (路径：app/src/mac/java)下面
-     * [com.king.mvvm.component.di.component.ModuleModule]中的配置。（大概位置在第 25 行）
      */
     isBuildModule = false
 }

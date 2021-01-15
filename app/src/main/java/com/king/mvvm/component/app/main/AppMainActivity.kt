@@ -10,6 +10,7 @@ import com.king.mvvm.base.BaseViewModel
 import com.king.mvvm.base.Constants
 import com.king.mvvm.component.BuildConfig
 import com.king.mvvm.component.R
+import dagger.hilt.android.AndroidEntryPoint
 
 /**
  *
@@ -31,6 +32,7 @@ import com.king.mvvm.component.R
  * 一个简单的新闻功能模块：主要用来展示基于 **MVVMFrame** 来实现组件化开发，作为组件化开发的 **Module** 实现示例之一。
  *
  */
+@AndroidEntryPoint
 class AppMainActivity : BaseActivity<BaseViewModel, ViewDataBinding>() {
 
     override fun initData(savedInstanceState: Bundle?) {

@@ -1,6 +1,7 @@
 package com.king.mvvm.base
 
 import android.app.Application
+import androidx.hilt.lifecycle.ViewModelInject
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.viewModelScope
 import com.king.base.util.SystemUtils
@@ -9,10 +10,8 @@ import com.king.frame.mvvmframe.base.DataViewModel
 import com.king.mvvm.base.bean.Response
 import kotlinx.coroutines.launch
 import timber.log.Timber
-import java.lang.Exception
 import java.net.ConnectException
 import java.net.SocketTimeoutException
-import javax.inject.Inject
 
 /**
  * 这里写一层 BaseViewModel 是为了方便统一维护公共的一些配置，只是一个示例，如果您没有
@@ -20,7 +19,7 @@ import javax.inject.Inject
  *
  * @author <a href="mailto:jenly1314@gmail.com">Jenly</a>
  */
-open class BaseViewModel @Inject constructor(application: Application, model: BaseModel) : DataViewModel(application,model) {
+open class BaseViewModel @ViewModelInject constructor(application: Application, model: BaseModel) : DataViewModel(application,model) {
 
     val liveDataTag by lazy { MutableLiveData<Int>() }
 

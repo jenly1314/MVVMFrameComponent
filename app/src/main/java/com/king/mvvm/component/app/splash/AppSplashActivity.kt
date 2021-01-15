@@ -10,12 +10,14 @@ import com.king.mvvm.base.BaseActivity
 import com.king.mvvm.component.R
 import com.king.mvvm.component.app.main.AppMainActivity
 import com.king.mvvm.component.databinding.AppActivitySplashBinding
+import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.android.synthetic.main.app_activity_splash.*
 
 /**
  * 模板示例
  * @author <a href="mailto:jenly1314@gmail.com">Jenly</a>
  */
+@AndroidEntryPoint
 class AppSplashActivity : BaseActivity<AppSplashViewModel,AppActivitySplashBinding>(){
 
     override fun initData(savedInstanceState: Bundle?) {

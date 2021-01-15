@@ -6,8 +6,9 @@
         <activity android:name="com.king.mvvm.news.app.main.NewsMainActivity"
             android:screenOrientation="portrait"/>
 
-<!--        <meta-data android:name="com.king.mvvm.news.app.NewsComponentApp"-->
-<!--            android:value="ComponentApp"/>-->
+        <!-- name为：IComponentApp的实现类，value固定为: ComponentApp -->
+        <meta-data android:name="com.king.mvvm.news.NewsComponentApp"
+            android:value="ComponentApp"/>
 
     </application>
 

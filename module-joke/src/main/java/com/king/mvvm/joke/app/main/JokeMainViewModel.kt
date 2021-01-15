@@ -1,6 +1,7 @@
 package com.king.mvvm.joke.app.main
 
 import android.app.Application
+import androidx.hilt.lifecycle.ViewModelInject
 import androidx.lifecycle.MutableLiveData
 import com.king.frame.mvvmframe.base.BaseModel
 import com.king.mvvm.base.BaseViewModel
@@ -8,13 +9,12 @@ import com.king.mvvm.joke.api.ApiService
 import com.king.mvvm.joke.app.Constants
 import com.king.mvvm.joke.bean.JokeDTO
 import retrofit2.await
-import javax.inject.Inject
 
 /**
  * ViewModel层，弱化 Model层
  * @author <a href="mailto:jenly1314@gmail.com">Jenly</a>
  */
-class JokeMainViewModel @Inject constructor(application: Application,model: BaseModel) : BaseViewModel(application,model){
+class JokeMainViewModel @ViewModelInject constructor(application: Application, model: BaseModel) : BaseViewModel(application,model){
 
     private val apiService by lazy { getRetrofitService(ApiService::class.java) }
 

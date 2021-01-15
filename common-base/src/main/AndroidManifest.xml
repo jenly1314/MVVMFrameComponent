@@ -3,8 +3,9 @@
 
     <application>
 
-        <meta-data android:name="com.king.mvvm.base.app.BaseComponentApp"
-            android:value="ComponentApp"/>
+        <!-- MVVMFrame 全局配置 -->
+        <meta-data android:name="com.king.mvvm.base.config.AppConfigModule"
+            android:value="FrameConfigModule"/>
 
     </application>
 

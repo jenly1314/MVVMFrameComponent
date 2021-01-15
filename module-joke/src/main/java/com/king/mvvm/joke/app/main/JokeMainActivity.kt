@@ -10,9 +10,11 @@ import com.king.mvvm.base.adapter.BaseAdapter
 import com.king.mvvm.joke.R
 import com.king.mvvm.joke.bean.JokeDTO
 import com.king.mvvm.joke.databinding.JokeActivityMainBinding
+import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.android.synthetic.main.joke_activity_main.*
 
 @Route(path = Constants.ROUTE.JOKE_MAIN)
+@AndroidEntryPoint
 class JokeMainActivity : BaseActivity<JokeMainViewModel, JokeActivityMainBinding>(){
 
     private val mAdapter by lazy { BaseAdapter<JokeDTO>(context,R.layout.joke_rv_joke_item) }

@@ -2,6 +2,7 @@ apply plugin: 'com.android.library'
 apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-android-extensions'
 apply plugin: 'kotlin-kapt'
+apply plugin: 'dagger.hilt.android.plugin'
 
 android {
     compileSdkVersion build_versions.compileSdk
@@ -65,10 +66,16 @@ dependencies {
     compileOnly deps.kotlinx_coroutines_android
     compileOnly deps.lifecycle_viewmodel_ktx
 
-    kapt  deps.dagger.android_processor
-    kapt  deps.dagger.compiler
+    //lifecycle
+    kapt "androidx.lifecycle:lifecycle-compiler:$versions.lifecycle"
+    //room
+    kapt "androidx.room:room-compiler:$versions.room"
+    //hilt
+    implementation "com.google.dagger:hilt-android:$versions.hiltAndroid"
+    kapt "com.google.dagger:hilt-android-compiler:$versions.hiltAndroid"
 
-    kapt  deps.room.compiler
+    implementation "androidx.hilt:hilt-lifecycle-viewmodel:$versions.hilt"
+    kapt "androidx.hilt:hilt-compiler:$versions.hilt"
 
     api deps.router.arouter
     kapt deps.router.arouter_compiler

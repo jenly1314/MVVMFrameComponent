@@ -1,8 +1,7 @@
-package com.king.mvvm.news.app
+package com.king.mvvm.news
 
 import com.king.mvvm.base.BaseApp
 import com.king.mvvm.base.IComponentApp
-import com.king.mvvm.news.di.component.DaggerNewsComponent
 
 /**
  * @author <a href="mailto:jenly1314@gmail.com">Jenly</a>
@@ -10,10 +9,7 @@ import com.king.mvvm.news.di.component.DaggerNewsComponent
 class NewsComponentApp : IComponentApp{
 
     override fun onCreate(app: BaseApp) {
-        DaggerNewsComponent.builder()
-            .appComponent(app.appComponent)
-            .build()
-            .inject(app)
+
     }
 
 }

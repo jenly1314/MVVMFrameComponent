@@ -15,6 +15,7 @@
 ### 主要使用的核心技术
 
 * JetPack(Lifecycle，LiveData，ViewModel，Room)
+* Hilt
 * Dagger
 * DataBinding
 * Retrofit
@@ -86,17 +87,17 @@
 ## 示例
 
 ### 关于各组件/模块共用 **Application** 初始化
+ 对于模块公用的可以尽量写在 **BaseApp** 中，对于模块相对独立使用的，可以写在模块对应 **IComponentApp** 的实现实现类中
+ 
+ **IComponentApp**的实现类为非必须的，如果你有这样的需要才使用，这里贴出各模块的 **IComponentApp** 实现类示例供参考：
+ [**module-joke**](module-joke) 中 **IComponentApp** 的实现类是 [**JokeComponentApp**](module-joke/src/main/java/com/king/mvvm/joke/JokeComponentApp.kt)
+ [**module-news**](module-news) 中 **IComponentApp** 的实现类是 [**NewsComponentApp**](module-news/src/main/java/com/king/mvvm/news/NewsComponentApp.kt)
 
-在每一个子模块，写一个**IComponentApp**的实现类，实现各个子模块共用 **Application**，示例如下：
+这里贴出[**module-joke**](module-joke)中的代码示例
 ```kotlin
-//这是app中的示例
-class AppComponentApp: IComponentApp {
+class JokeComponentApp : IComponentApp{
 
     override fun onCreate(app: BaseApp) {
-        DaggerAppMainComponent.builder()
-            .appComponent(app.appComponent)
-            .build()
-            .inject(app)
 
     }
 
@@ -105,12 +106,23 @@ class AppComponentApp: IComponentApp {
 
 在 **Manifest** 中配置 **meta-data** 对应的**IComponentApp**实现类，示例如下 ：
 ```xml
-        <meta-data android:name="com.king.mvvm.component.app.AppComponentApp"
+        <!-- name为：IComponentApp的实现类，value固定为: ComponentApp -->
+        <meta-data android:name="com.king.mvvm.joke.JokeComponentApp"
             android:value="ComponentApp"/>
 ```
 
-
 更多使用详情，请查看[app](app)中的源码使用示例
+
+## 更新日志 
+
+#### 2021-1-15
+*  使用Hilt简化Dagger依赖注入用法
+*  更新gradle至v4.1.1
+*  更新MVVMFrame至v2.0.0
+*  更新其它第三方依赖库版本
+
+#### 2020-6-23
+*  MVVMFrameComponent初始版本
 
 ## 赞赏
 如果你喜欢MVVMFrameComponent，或感觉MVVMFrameComponent帮助到了你，可以点右上角“Star”支持一下，你的支持就是我的动力，谢谢 :smiley:<p>

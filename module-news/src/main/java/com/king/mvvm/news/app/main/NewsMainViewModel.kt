@@ -1,17 +1,17 @@
 package com.king.mvvm.news.app.main
 
 import android.app.Application
+import androidx.hilt.lifecycle.ViewModelInject
 import androidx.lifecycle.MutableLiveData
 import com.king.mvvm.base.BaseViewModel
 import com.king.mvvm.news.app.Constants
 import com.king.mvvm.news.bean.NewsDTO
-import javax.inject.Inject
 
 /**
  * 标准 ViewModel层
  * @author <a href="mailto:jenly1314@gmail.com">Jenly</a>
  */
-class NewsMainViewModel @Inject constructor(application: Application,val model: NewsMainModel) : BaseViewModel(application,model){
+class NewsMainViewModel @ViewModelInject constructor(application: Application, val model: NewsMainModel) : BaseViewModel(application,model){
 
     val liveData by lazy { MutableLiveData<MutableList<NewsDTO>>() }
 
