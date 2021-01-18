@@ -15,6 +15,8 @@ open class BaseApp : Application(){
 
     private var componentApps: MutableList<IComponentApp>? = null
 
+    private val componentMap by lazy { HashMap<String,Int>() }
+
     override fun onCreate() {
         super.onCreate()
         initLogger()
@@ -82,9 +84,14 @@ open class BaseApp : Application(){
      */
     fun <T : IComponentApp?> getComponentApp(cls: Class<T>): T? {
         if (componentApps != null) {
-            for (componentApp in componentApps!!) {
-                if (cls.isInstance(componentApp)) {
-                    return componentApp as T
+            var index = componentMap[cls.canonicalName]
+            if(index != null){
+                return componentApps!![index] as T
+            }
+            for((index, value) in componentApps!!.withIndex()){
+                if (cls.isInstance(value)) {
+                    componentMap[cls.canonicalName!!] = index
+                    return value as T
                 }
             }
         }

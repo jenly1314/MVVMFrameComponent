@@ -115,6 +115,8 @@ class JokeComponentApp : IComponentApp{
             android:value="ComponentApp"/>
 ```
 
+当想要获取各模块的 **IComponentApp** 实现类时，可通过 **BaseApp** 的 **getComponentApp** 方法获取。
+
 更多使用详情，请查看[app](app)中的源码使用示例
 
 ## 更新日志 
